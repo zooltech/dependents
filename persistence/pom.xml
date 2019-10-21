@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>tech.zool</groupId>
+    <artifactId>env</artifactId>
+    <version>0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>persistence-deps</artifactId>
+  <packaging>pom</packaging>
+  <name>Persistence dependents</name>
+  <description>持久化相关依赖组件</description>
+
+  <properties>
+    <!-- 6.0.0开始要求JDK11+ -->
+    <hibernate.ver>5.6.12.Final</hibernate.ver>
+    <!-- 8.X 需要Java17+ -->
+    <ES.ver>7.17.6</ES.ver>
+    <hasor.ver>4.2.5</hasor.ver>
+    <poi.ver>5.2.3</poi.ver>
+    <!-- slf4j 1.7.x需要java 1.5以上；2.x需要java 8以上 -->
+    <slf4j.ver>2.0.3</slf4j.ver>
+    <!-- log4j 2.3及以下支持java 1.6；2.4及以后版本需要java 7以上 -->
+    <log4j.ver>2.19.0</log4j.ver>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- persistence framework -->
+      <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-core</artifactId>
+        <version>${hibernate.ver}</version>
+      </dependency>
+      <dependency>
+        <!-- optional -->
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-ehcache</artifactId>
+        <version>${hibernate.ver}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis</artifactId>
+        <version>3.5.11</version>
+      </dependency>
+      <dependency>
+      <groupId>org.mybatis</groupId>
+        <artifactId>mybatis-spring</artifactId>
+        <version>2.0.7</version>
+      </dependency>
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus</artifactId>
+        <version>3.5.2</version>
+      </dependency>
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-boot-starter</artifactId>
+        <version>3.5.2</version>
+      </dependency>
+      <dependency>
+        <groupId>net.hasor</groupId>
+        <artifactId>hasor-dataql</artifactId>
+        <version>${hasor.ver}</version>
+      </dependency>
+      <dependency>
+        <groupId>net.hasor</groupId>
+        <artifactId>hasor-dataql-fx</artifactId>
+        <version>${hasor.ver}</version>
+      </dependency>
+      <!-- datasource, pool -->
+      <dependency>
+        <groupId>com.zaxxer</groupId>
+        <artifactId>HikariCP</artifactId>
+        <!-- JDK11 -->
+        <version>5.0.1</version>
+        <!-- JDK8 -->
+        <!-- <version>4.0.3</version> -->
+      </dependency>
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>druid</artifactId>
+        <version>1.2.12</version>
+        <exclusions>
+          <exclusion>
+            <groupId>com.alibaba</groupId>
+            <artifactId>jconsole</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>com.alibaba</groupId>
+            <artifactId>tools</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      <!-- JDBC Driver -->
+      <dependency>
+        <groupId>com.h2database</groupId>
+        <artifactId>h2</artifactId>
+        <version>2.1.214</version>
+        <scope>runtime</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.xerial</groupId>
+        <artifactId>sqlite-jdbc</artifactId>
+        <version>3.39.3.0</version>
+        <scope>runtime</scope>
+      </dependency>
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0.30</version>
+        <scope>runtime</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <!-- java 1.6使用jdbc4(.jre6)，1.7使用jdbc41(.jre7)，1.8及以上使用jdbc42(无后缀) -->
+        <version>42.5.0</version>
+        <!-- <version>42.2.8.jre7</version> -->
+        <scope>runtime</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.mongodb</groupId>
+        <artifactId>mongo-java-driver</artifactId>
+        <version>3.12.11</version>
+      </dependency>
+
+      <!-- ORACLE -->
+      <dependency>
+        <groupId>com.oracle.database.jdbc</groupId>
+        <!-- For JDK 11 - 15 -->
+        <artifactId>ojdbc11</artifactId>
+        <version>21.7.0.0</version>
+        <!--<version>18.3.0.0</version>
+        <version>12.2.0.1</version>-->
+        <scope>runtime</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.oracle.database.jdbc</groupId>
+        <!-- For JDK 8, 11 - 15 -->
+        <artifactId>ojdbc8</artifactId>
+        <version>21.7.0.0</version>
+        <!--<version>18.3.0.0</version>
+        <version>12.2.0.1</version>-->
+        <scope>runtime</scope>
+      </dependency>
+      <!-- DB2 -->
+      <dependency>
+        <groupId>com.ibm.db2</groupId>
+        <artifactId>jcc</artifactId>
+        <version>11.5.7.0</version>
+        <scope>runtime</scope>
+      </dependency>
+      <!-- SQL SERVER . 后缀对应Java版本：jre8、jre11、jre17 -->
+      <dependency>
+        <groupId>com.microsoft.sqlserver</groupId>
+        <artifactId>mssql-jdbc</artifactId>
+        <version>11.2.1.jre8</version>
+        <scope>runtime</scope>
+      </dependency>
+
+      <!-- ES client -->
+      <dependency>
+        <groupId>org.elasticsearch.client</groupId>
+        <artifactId>elasticsearch-rest-client</artifactId>
+        <version>${ES.ver}</version>
+      </dependency>
+      <dependency>
+        <groupId>co.elastic.clients</groupId>
+        <artifactId>elasticsearch-java</artifactId>
+        <version>${ES.ver}</version>
+      </dependency>
+      <!-- 7.15后废弃，改用elasticsearch-java。和elasticsearch-java不兼容，但可以共存。 -->
+      <dependency>
+        <groupId>org.elasticsearch.client</groupId>
+        <artifactId>elasticsearch-rest-high-level-client</artifactId>
+        <version>${ES.ver}</version>
+      </dependency>
+
+      <!-- cache -->
+      <dependency>
+        <groupId>com.github.ben-manes.caffeine</groupId>
+        <artifactId>caffeine</artifactId>
+        <version>3.1.1</version>
+      </dependency>
+
+      <!-- redis client -->
+      <!--
+1. Jedis
+
+Jedis 是老牌的 Redis 的 Java 实现客户端，提供了比较全面的 Redis 命令的支持，其官方网址是：http://tool.oschina.net/uploads/apidocs/redis/clients/jedis/Jedis.html。
+
+优点：
+
+支持全面的 Redis 操作特性（可以理解为API比较全面）。
+
+缺点：
+
+使用阻塞的 I/O，且其方法调用都是同步的，程序流需要等到 sockets 处理完 I/O 才能执行，不支持异步；
+
+Jedis 客户端实例不是线程安全的，所以需要通过连接池来使用 Jedis。
+
+2. lettuce
+
+lettuce （[ˈletɪs]），是一种可扩展的线程安全的 Redis 客户端，支持异步模式。如果避免阻塞和事务操作，如BLPOP和MULTI/EXEC，多个线程就可以共享一个连接。lettuce 底层基于 Netty，支持高级的 Redis 特性，比如哨兵，集群，管道，自动重新连接和Redis数据模型。lettuce 的官网地址是：https://lettuce.io/
+
+优点：
+
+支持同步异步通信模式；
+
+Lettuce 的 API 是线程安全的，如果不是执行阻塞和事务操作，如BLPOP和MULTI/EXEC，多个线程就可以共享一个连接。
+
+3. Redisson
+
+Redisson 是一个在 Redis 的基础上实现的 Java 驻内存数据网格（In-Memory Data Grid）。它不仅提供了一系列的分布式的 Java 常用对象，还提供了许多分布式服务。其中包括( BitSet, Set, Multimap, SortedSet, Map, List, Queue, BlockingQueue, Deque, BlockingDeque, Semaphore, Lock, AtomicLong, CountDownLatch, Publish / Subscribe, Bloom filter, Remote service, Spring cache, Executor service, Live Object service, Scheduler service) Redisson 提供了使用Redis 的最简单和最便捷的方法。Redisson 的宗旨是促进使用者对Redis的关注分离（Separation of Concern），从而让使用者能够将精力更集中地放在处理业务逻辑上。Redisson的官方网址是：https://redisson.org/
+
+优点：
+
+使用者对 Redis 的关注分离，可以类比 Spring 框架，这些框架搭建了应用程序的基础框架和功能，提升开发效率，让开发者有更多的时间来关注业务逻辑；
+
+提供很多分布式相关操作服务，例如，分布式锁，分布式集合，可通过Redis支持延迟队列等。
+
+缺点：
+
+Redisson 对字符串的操作支持比较差。
+
+4. 使用建议
+
+结论：lettuce + Redisson
+
+Jedis 和 lettuce 是比较纯粹的 Redis 客户端，几乎没提供什么高级功能。Jedis 的性能比较差，所以如果你不需要使用 Redis 的高级功能的话，优先推荐使用 lettuce。
+
+Redisson 的优势是提供了很多开箱即用的 Redis 高级功能，如果你的应用中需要使用到 Redis 的高级功能，建议使用 Redisson。
+       -->
+      <dependency>
+        <groupId>org.redisson</groupId>
+        <artifactId>redisson</artifactId>
+        <version>3.17.6</version>
+      </dependency>
+      <dependency>
+        <groupId>io.lettuce</groupId>
+        <artifactId>lettuce-core</artifactId>
+        <version>6.2.0.RELEASE</version>
+      </dependency>
+	  
+      <dependency>
+        <groupId>io.minio</groupId>
+        <artifactId>minio</artifactId>
+        <version>8.4.5</version>
+      </dependency>
+
+      <!-- git client -->
+      <dependency>
+        <groupId>org.eclipse.jgit</groupId>
+        <artifactId>org.eclipse.jgit</artifactId>
+        <version>6.3.0.202209071007-r</version>
+      </dependency>
+      <!-- svn client -->
+      <dependency>
+        <groupId>org.tmatesoft.svnkit</groupId>
+        <artifactId>svnkit</artifactId>
+        <version>1.10.8</version>
+      </dependency>
+      <!-- poi -->
+      <dependency>
+        <groupId>org.apache.poi</groupId>
+        <artifactId>poi</artifactId>
+        <version>${poi.ver}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.poi</groupId>
+        <artifactId>poi-ooxml</artifactId>
+        <version>${poi.ver}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.poi</groupId>
+        <artifactId>poi-scratchpad</artifactId>
+        <version>${poi.ver}</version>
+      </dependency>
+
+      <!-- logging -->
+      <dependency>
+        <!-- 1.7.x需要java 1.5以上；2.x需要java 8以上 -->
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${slf4j.ver}</version>
+      </dependency>
+      <!-- commons-logging重定向到slf4j，用本jar替换commons-logging.jar -->
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>jcl-over-slf4j</artifactId>
+        <version>${slf4j.ver}</version>
+      </dependency>
+      <dependency>
+        <!-- 使用java.util.logging 作为实际日志输出，不能与jul-to-slf4j同时使用 -->
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-jdk14</artifactId>
+        <version>${slf4j.ver}</version>
+        <scope>runtime</scope>
+      </dependency>
+      <!-- java.util.logging.Logger重定向到slf4j，性能差，不能与slf4j-jdk14同时使用 -->
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>jul-to-slf4j</artifactId>
+        <version>${slf4j.ver}</version>
+        <scope>runtime</scope>
+      </dependency>
+
+      <!-- log4j 2 性能最好。与slf4j配和使用会降低些性能，但灵活性好 -->
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-api</artifactId>
+        <version>${log4j.ver}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-core</artifactId>
+        <version>${log4j.ver}</version>
+        <scope>runtime</scope>
+      </dependency>
+      <!-- log4j2与slf4j(1.7.x)桥接的包。(让slf4j使用log4j2记录日志)。不要和log4j-to-slf4j一起使用,会死循环!!! -->
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-slf4j-impl</artifactId>
+        <version>${log4j.ver}</version>
+        <scope>runtime</scope>
+      </dependency>
+      <!-- log4j2日志发送到sl4j。因为要做格式转换，会造成性能下降。不要和log4j-slf4j-impl一起使用,会死循环!!! -->
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-to-slf4j</artifactId>
+        <version>${log4j.ver}</version>
+        <scope>runtime</scope>
+      </dependency>
+      <!-- log4j2与JDK logging桥接的包。需要设置系统属性 -Djava.util.logging.manager=org.apache.logging.log4j.jul.LogManager -->
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-jul</artifactId>
+        <version>${log4j.ver}</version>
+        <scope>runtime</scope>
+      </dependency>
+      <!-- log4j2与commons-logging桥接的包。注意不要移除原来依赖的那些包 -->
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-jcl</artifactId>
+        <version>${log4j.ver}</version>
+        <scope>runtime</scope>
+      </dependency>
+      <!-- 用于web工程中的filter配置 -->
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-web</artifactId>
+        <version>${log4j.ver}</version>
+        <scope>runtime</scope>
+      </dependency>
+      <!-- 如果配置全局异步日志需要此包 -->
+      <dependency>
+        <groupId>com.lmax</groupId>
+        <artifactId>disruptor</artifactId>
+        <version>3.4.4</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+</project>

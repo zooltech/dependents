@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>tech.zool</groupId>
+    <artifactId>env</artifactId>
+    <version>0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>util-deps</artifactId>
+  <packaging>pom</packaging>
+  <name>Util dependents</name>
+  <description>工具相关依赖组件</description>
+
+  <properties>
+    <quartz.ver>2.3.2</quartz.ver>
+    <shiro.ver>1.9.1</shiro.ver>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- 工具类 -->
+      <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava</artifactId>
+        <version>31.1-jre</version>
+      </dependency>
+      <!-- joda-time 作者写的让 JDK7、JDK6 可以使用 JDK8 提供的JSR310日期时间接口。 -->
+      <dependency>
+        <groupId>org.threeten</groupId>
+        <artifactId>threetenbp</artifactId>
+        <version>1.6.2</version>
+      </dependency>
+      <!-- joda-time 作者写的,对 JDK8 提供的JSR310日期时间接口功能的扩展。 -->
+      <dependency>
+        <groupId>org.threeten</groupId>
+        <artifactId>threeten-extra</artifactId>
+        <version>1.7.1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>3.12.0</version>
+      </dependency>
+      <dependency>
+        <groupId>commons-codec</groupId>
+        <artifactId>commons-codec</artifactId>
+        <version>1.15</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-compress</artifactId>
+        <version>1.21</version>
+      </dependency>
+      <dependency>
+        <groupId>commons-fileupload</groupId>
+        <artifactId>commons-fileupload</artifactId>
+        <version>1.4</version>
+      </dependency>
+      <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>2.11.0</version>
+      </dependency>
+      <!-- LZMA/LZMA2算法库;xz压缩格式库 -->
+      <dependency>
+        <groupId>org.tukaani</groupId>
+        <artifactId>xz</artifactId>
+        <version>1.9</version>
+      </dependency>
+      <!-- rar -->
+      <dependency>
+        <groupId>com.github.junrar</groupId>
+        <artifactId>junrar</artifactId>
+        <!-- jdk1.8+ -->
+        <version>7.5.3</version>
+        <!-- jdk1.6+ -->
+        <!--<version>4.0.0</version>-->
+      </dependency>
+
+      <!-- json -->
+      <dependency>
+        <groupId>com.fasterxml.jackson</groupId>
+        <artifactId>jackson-bom</artifactId>
+        <version>2.13.4</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.google.code.gson</groupId>
+        <artifactId>gson</artifactId>
+        <version>2.9.1</version>
+      </dependency>
+      <dependency>
+        <groupId>com.alibaba.fastjson2</groupId>
+        <artifactId>fastjson2</artifactId>
+        <version>2.0.14</version>
+      </dependency>
+      <!-- fastjson 1.2.x兼容包
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>fastjson</artifactId>
+        <version>2.0.1</version>
+      </dependency> -->
+
+      <!-- yaml -->
+      <dependency>
+        <groupId>org.yaml</groupId>
+        <artifactId>snakeyaml</artifactId>
+        <version>1.33</version>
+      </dependency>
+
+      <!-- xml -->
+      <dependency>
+        <groupId>xerces</groupId>
+        <artifactId>xercesImpl</artifactId>
+        <version>2.12.2</version>
+        <!-- jre 包含这些接口 -->
+        <exclusions>
+          <exclusion>
+            <groupId>xml-apis</groupId>
+            <artifactId>xml-apis</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+
+      <!-- Quartz -->
+      <dependency>
+        <groupId>org.quartz-scheduler</groupId>
+        <artifactId>quartz</artifactId>
+        <version>${quartz.ver}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.quartz-scheduler</groupId>
+        <artifactId>quartz-jobs</artifactId>
+        <version>${quartz.ver}</version>
+      </dependency>
+
+      <!-- pure java SSH2 -->
+      <dependency>
+        <groupId>com.jcraft</groupId>
+        <artifactId>jsch</artifactId>
+        <version>0.1.55</version>
+      </dependency>
+
+      <!-- 鉴权框架 -->
+      <dependency>
+        <groupId>org.apache.shiro</groupId>
+        <artifactId>shiro-core</artifactId>
+        <version>${shiro.ver}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.shiro</groupId>
+        <artifactId>shiro-spring</artifactId>
+        <version>${shiro.ver}</version>
+      </dependency>
+
+      <!-- money & currency -->
+      <dependency>
+        <groupId>javax.money</groupId>
+        <artifactId>money-api</artifactId>
+        <version>1.1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.javamoney</groupId>
+        <artifactId>moneta</artifactId>
+        <version>1.4.2</version>
+        <type>pom</type>
+      </dependency>
+
+      <!-- cryptographic algorithms -->
+      <dependency>
+        <groupId>org.bouncycastle</groupId>
+        <artifactId>bcprov-jdk15on</artifactId>
+        <version>1.70</version>
+      </dependency>
+	  <!-- 包含 NTRU 加密算法 -->
+      <dependency>
+        <groupId>org.bouncycastle</groupId>
+        <artifactId>bcprov-ext-jdk15on</artifactId>
+        <version>1.70</version>
+      </dependency>
+
+      <!-- 字节码工具 -->
+      <dependency>
+        <groupId>org.ow2.asm</groupId>
+        <artifactId>asm</artifactId>
+        <version>9.4</version>
+      </dependency>
+      <dependency>
+        <groupId>org.javassist</groupId>
+        <artifactId>javassist</artifactId>
+        <version>3.29.2-GA</version>
+      </dependency>
+
+      <!-- jakartaEE 9 标准所有API，包括了后面的jakarta.*-api包 -->
+      <dependency>
+        <groupId>jakarta.platform</groupId>
+        <artifactId>jakarta.jakartaee-api</artifactId>
+        <!-- jakarta EE 8 是过渡版，包名仍为 javax.*(等同javax:javaee-api) 而 java EE 9 改名为 jakarta EE 9，包名也变为 jakarta.* -->
+        <version>8.0.0</version>
+        <!-- <version>9.1.0</version> -->
+        <scope>provided</scope>
+      </dependency>
+      <!-- Jakarta Annotations API -->
+      <dependency>
+        <groupId>jakarta.annotation</groupId>
+        <artifactId>jakarta.annotation-api</artifactId>
+        <!-- 包名仍为 javax.* -->
+        <version>1.3.5</version>
+        <!-- <version>2.1.1</version> -->
+      </dependency>
+      <!-- Jakarta Bean Validation API 2.0 (JSR380) -->
+      <dependency>
+        <groupId>jakarta.validation</groupId>
+        <artifactId>jakarta.validation-api</artifactId>
+        <!--  包名仍为 javax.* -->
+        <version>2.0.2</version>
+        <!-- <version>3.0.2</version> -->
+      </dependency>
+      <!-- apache实现 Bean validation 2.0 标准(JSR380) -->
+      <dependency>
+        <groupId>org.apache.bval</groupId>
+        <artifactId>bval-jsr</artifactId>
+        <version>2.0.6</version>
+      </dependency>
+
+      <!-- javascript引擎 (java6~10集成javascript引擎，从java11开始，不再集成javascript引擎，但脚本接口保留) -->
+      <dependency>
+        <groupId>org.graalvm.js</groupId>
+        <artifactId>js</artifactId>
+        <version>22.2.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.openjdk.nashorn</groupId>
+        <artifactId>nashorn-core</artifactId>
+        <version>15.4</version>
+      </dependency>
+      <!-- jpython引擎 -->
+      <dependency>
+        <groupId>org.python</groupId>
+        <artifactId>jython-standalone</artifactId>
+        <version>2.7.3</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+</project>

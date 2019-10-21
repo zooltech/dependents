@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>tech.zool</groupId>
+    <artifactId>env</artifactId>
+    <version>0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>net-deps</artifactId>
+  <packaging>pom</packaging>
+  <name>Net dependents</name>
+  <description>网络相关依赖组件</description>
+
+  <properties>
+    <httpclient.ver>4.5.13</httpclient.ver>
+    <httpcore.ver>4.4.15</httpcore.ver>
+    <nacos.ver>2.1.1</nacos.ver>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- 队列客户端 -->
+      <dependency>
+        <groupId>org.apache.pulsar</groupId>
+        <artifactId>pulsar-client</artifactId>
+        <version>2.10.1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.kafka</groupId>
+        <artifactId>kafka-clients</artifactId>
+        <version>3.2.3</version>
+      </dependency>
+
+      <!-- registry center client -->
+      <dependency>
+        <groupId>com.alibaba.nacos</groupId>
+        <artifactId>nacos-client</artifactId>
+        <version>${nacos.ver}</version>
+      </dependency>
+
+      <!-- http client -->
+      <dependency>
+        <groupId>com.squareup.okhttp3</groupId>
+        <artifactId>okhttp</artifactId>
+        <version>4.10.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpclient</artifactId>
+        <version>${httpclient.ver}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpcore</artifactId>
+        <version>${httpcore.ver}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpcore-nio</artifactId>
+        <version>${httpcore.ver}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpmime</artifactId>
+        <version>${httpclient.ver}</version>
+      </dependency>
+      <dependency> 
+        <groupId>org.apache.httpcomponents</groupId> 
+        <artifactId>httpasyncclient</artifactId> 
+        <version>4.1.5</version> 
+      </dependency>
+
+      <!-- 如果环境中有javax.mail包 可以使用这个接口包做编译依赖 -->
+      <dependency>
+        <groupId>javax.mail</groupId>
+        <artifactId>javax.mail-api</artifactId>
+        <version>1.6.2</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.sun.mail</groupId>
+        <artifactId>javax.mail</artifactId>
+        <version>1.6.2</version>
+        <scope>runtime</scope>
+      </dependency>
+
+      <!-- servlet 编译期依赖包 -->
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>4.0.1</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-jsp-api</artifactId>
+        <version>9.0.67</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <!-- 基于NIO的客户、服务器端编程框架，可以快速和简单的开发出一个网络应用 -->
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-all</artifactId>
+        <version>4.1.82.Final</version>
+      </dependency>
+
+      <!-- 高性能TCP长连接框架 -->
+      <dependency>
+        <groupId>org.t-io</groupId>
+        <artifactId>tio-core</artifactId>
+        <version>3.8.3.v20220902-RELEASE</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+</project>
