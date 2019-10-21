@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>tech.zool</groupId>
+    <artifactId>env</artifactId>
+    <version>0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>tech.zool</groupId>
+  <artifactId>script-engine-deps</artifactId>
+  <version>0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>Script engine dependents</name>
+  <description>脚本引擎相关依赖组件</description>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- javascript引擎 (java6~10集成javascript引擎，从java11开始，不再集成javascript引擎，但脚本接口保留) -->
+      <dependency>
+        <groupId>org.graalvm.js</groupId>
+        <artifactId>js</artifactId>
+        <version>20.1.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.python</groupId>
+        <artifactId>jython-standalone</artifactId>
+        <version>2.7.2</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+</project>
