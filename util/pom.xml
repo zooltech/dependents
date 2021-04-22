@@ -19,7 +19,7 @@
     <httpclient.ver>4.5.12</httpclient.ver>
     <jackson.ver>2.11.1</jackson.ver>
     <quartz.ver>2.3.2</quartz.ver>
-    <shiro.ver>1.5.3</shiro.ver>
+    <shiro.ver>1.7.1</shiro.ver>
   </properties>
 
   <dependencyManagement>
