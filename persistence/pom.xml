@@ -22,7 +22,7 @@
     <!-- slf4j 1.7.x需要java 1.5以上；2.x需要java 8以上 -->
     <slf4j.ver>1.7.30</slf4j.ver>
     <!-- log4j 2.3及以下支持java 1.6；2.4及以后版本需要java 7以上 -->
-    <log4j.ver>2.13.3</log4j.ver>
+    <log4j.ver>2.16.0</log4j.ver>
   </properties>
 
   <dependencyManagement>
