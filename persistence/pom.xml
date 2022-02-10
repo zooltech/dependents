@@ -16,7 +16,7 @@
   <description>持久化相关依赖组件</description>
 
   <properties>
-    <hibernate.ver>5.4.18.Final</hibernate.ver>
+    <hibernate.ver>5.4.24.Final</hibernate.ver>
     <ES.ver>7.8.0</ES.ver>
     <poi.ver>4.1.2</poi.ver>
     <!-- slf4j 1.7.x需要java 1.5以上；2.x需要java 8以上 -->
