@@ -14,7 +14,7 @@
   <description>工具相关依赖组件</description>
 
   <properties>
-    <jackson.ver>2.13.1</jackson.ver>
+    <jackson.ver>2.13.2.1</jackson.ver>
     <quartz.ver>2.3.2</quartz.ver>
     <shiro.ver>1.8.0</shiro.ver>
   </properties>
