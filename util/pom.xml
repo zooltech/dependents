@@ -16,7 +16,7 @@
   <properties>
     <jackson.ver>2.13.1</jackson.ver>
     <quartz.ver>2.3.2</quartz.ver>
-    <shiro.ver>1.8.0</shiro.ver>
+    <shiro.ver>1.9.1</shiro.ver>
   </properties>
 
   <dependencyManagement>
