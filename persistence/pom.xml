@@ -115,7 +115,7 @@
         <groupId>org.postgresql</groupId>
         <artifactId>postgresql</artifactId>
         <!-- java 1.6使用jdbc4(.jre6)，1.7使用jdbc41(.jre7)，1.8及以上使用jdbc42(无后缀) -->
-        <version>42.3.3</version>
+        <version>42.3.7</version>
         <!-- <version>42.2.8.jre7</version> -->
         <scope>runtime</scope>
       </dependency>
