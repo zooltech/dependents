@@ -15,7 +15,7 @@
 
   <properties>
     <quartz.ver>2.3.2</quartz.ver>
-    <shiro.ver>1.9.1</shiro.ver>
+    <shiro.ver>1.10.0</shiro.ver>
   </properties>
 
   <dependencyManagement>
